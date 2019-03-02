@@ -51,6 +51,13 @@ async def ты():
     # взять пидора из файла
     await client.say(random.choice(list(open('pidor.txt', encoding="utf-8"))))
 
+
+@client.command(description='For when you wanna settle the score some other way')
+async def pick(*choices: str):
+    """Chooses between multiple choices."""
+    await client.say(random.choice(choices))
+
+
 # постит цитату из доты
 @client.command()
 async def dota():
