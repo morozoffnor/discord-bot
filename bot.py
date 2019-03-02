@@ -51,6 +51,20 @@ async def ты():
     # взять пидора из файла
     await client.say(random.choice(list(open('pidor.txt', encoding="utf-8"))))
 
+
+@client.command()
+async def roll(dice: str):
+    # ролит рандомное число в заданном лимите
+    try:
+        rolls, limit = map(int, dice.split('d'))
+    except Exception:
+        await bot.say('Format has to be in NdN!')
+        return
+
+    result = ', '.join(str(random.randint(1, limit)) for r in range(rolls))
+    await bot.say(result)
+
+
 # постит цитату из доты
 @client.command()
 async def dota():
