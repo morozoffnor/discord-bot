@@ -1,2 +1,2 @@
 # discord-bot
-A small discord bot which was made just for test's sake
+Очень простой бот: меняет статус, который берет из status.txt, может отвечать на команды .dota и .ты, ответы берет из соответствующих файлов
