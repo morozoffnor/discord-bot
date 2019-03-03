@@ -18,6 +18,20 @@ async def on_ready():
     print(client.user.id)
     print('------')
 
+# пишет в консоль сервера, к которым подключен бот
+
+
+async def servers_status():
+    await client.wait_until_ready()
+
+    while not client.is_closed:
+        servers = list(client.servers)
+        print('------')
+        print('Connected on ', str(len(client.servers)), 'servers:')
+        for x in range(len(servers)):
+            print(' ', servers[x - 1].name)
+        print('------')
+        await asyncio.sleep(9999)
 
 # пинг-понг команда
 @client.command()
@@ -72,5 +86,7 @@ async def echo(*args):
         output += ' '
     await client.say(output)
 
+
+client.loop.create_task(servers_status())  # раз в три часа инфа о серверах
 client.loop.create_task(change_status())  # залупленная задача на смену статуса
 client.run(TOKEN)
