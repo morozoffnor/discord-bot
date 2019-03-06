@@ -26,7 +26,7 @@ async def load(extension):
         client.load_extension(extension)
         print('Модуль {} загружен'.format(extension))
         await client.say('Модуль {} загружен'.format(extension))
-    except Extension as error:
+    except Exception as error:
         print('Модуль {} не может быть загружен. [{}]'.format(
             extension, error))
         await client.say('Модуль {} не может быть загружен. [{}]'.format(
@@ -39,7 +39,7 @@ async def unload(extension):
         client.unload_extension(extension)
         print('Модуль {} отключен'.format(extension))
         await client.say('Модуль {} отключен'.format(extension))
-    except Extension as error:
+    except Exception as error:
         print('Модуль {} не может быть отключен. [{}]'.format(
             extension, error))
         await client.say('Модуль {} не может быть отключен. [{}]'.format(
