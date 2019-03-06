@@ -10,6 +10,42 @@ TOKEN = 'NTQ5NDk5MDgyMTY3ODEyMTA2.D1UxJQ.AWi7M3_4WKMf6zoT5Ydvp6_xRP8'
 # префикс-символ, который нужно ставить перед командой
 client = commands.Bot(command_prefix='.')
 
+extensions = ['module.comandi']
+
+if __name__ == '__main__':
+    for extension in extensions:
+        try:
+            client.load_extension(extension)
+        except Exception as error:
+            print('{} не может быть загружен. [{}]'.format(extension, error))
+
+
+@client.command()
+async def load(extension):
+    try:
+        client.load_extension(extension)
+        print('Модуль {} загружен'.format(extension))
+        await client.say('Модуль {} загружен'.format(extension))
+    except Extension as error:
+        print('Модуль {} не может быть загружен. [{}]'.format(
+            extension, error))
+        await client.say('Модуль {} не может быть загружен. [{}]'.format(
+            extension, error))
+
+
+@client.command()
+async def unload(extension):
+    try:
+        client.unload_extension(extension)
+        print('Модуль {} отключен'.format(extension))
+        await client.say('Модуль {} отключен'.format(extension))
+    except Extension as error:
+        print('Модуль {} не может быть отключен. [{}]'.format(
+            extension, error))
+        await client.say('Модуль {} не может быть отключен. [{}]'.format(
+            extension, error))
+
+
 # "бот готов к работе"
 @client.event
 async def on_ready():
@@ -27,16 +63,12 @@ async def servers_status():
     while not client.is_closed:
         servers = list(client.servers)
         print('------')
-        print('Connected on ', str(len(client.servers)), 'servers:')
+        print('Connected on', str(len(client.servers)), 'servers:')
         for x in range(len(servers)):
             print(' ', servers[x - 1].name)
         print('------')
         await asyncio.sleep(9999)
 
-# пинг-понг команда
-@client.command()
-async def ping():
-    await client.say('pong!')
 
 # смена статуса бота каждые х секунд в фоне
 
@@ -51,7 +83,7 @@ async def change_status():
         await asyncio.sleep(1000)  # менять статус каждые х секунд
 
 
-# выводит в консоль сообщения от всех пользователей, кроме бота
+# выводит в консоль сообщения от всех пользователей
 @client.event
 async def on_message(message):
     author = message.author
@@ -65,17 +97,14 @@ async def ты():
     # взять пидора из файла
     await client.say(random.choice(list(open('pidor.txt', encoding="utf-8"))))
 
-# выбор среди нескольких вариантов через пробел
-@client.command()
-async def pick(*choices: str):
-    await client.say(random.choice(choices))
 
-
-# постит цитату из доты
 @client.command()
-async def dota():
-    # взять цитату из файла
-    await client.say(random.choice(list(open('dota.txt', encoding="utf-8"))))
+async def info(a: str):
+    if a == ('подкаст'):
+        await client.say('Душный подкаст — vk.com/stuffycast')
+    elif a == ('Подкаст'):
+        await client.say('Душный подкаст — vk.com/stuffycast')
+
 
 # бот повторяет за пользователем
 @client.command()
