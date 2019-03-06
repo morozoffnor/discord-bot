@@ -91,12 +91,6 @@ async def on_message(message):
     print('{}: {}'.format(author, content))
     await client.process_commands(message)
 
-# постит пидора
-@client.command()
-async def ты():
-    # взять пидора из файла
-    await client.say(random.choice(list(open('pidor.txt', encoding="utf-8"))))
-
 
 @client.command()
 async def info(a: str):
