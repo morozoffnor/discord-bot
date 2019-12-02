@@ -10,7 +10,7 @@ TOKEN = 'NTQ5NDk5MDgyMTY3ODEyMTA2.D1UxJQ.AWi7M3_4WKMf6zoT5Ydvp6_xRP8'
 # префикс-символ, который нужно ставить перед командой
 client = commands.Bot(command_prefix='.')
 
-extensions = ['module.comandi']
+extensions = ['module.comandi', 'module.gifs', 'module.twitch']
 
 if __name__ == '__main__':
     for extension in extensions:
@@ -98,6 +98,10 @@ async def info(a: str):
         await client.say('Душный подкаст — vk.com/stuffycast')
     elif a == ('Подкаст'):
         await client.say('Душный подкаст — vk.com/stuffycast')
+    elif a == ('Podcast'):
+        await client.say('Душный подкаст — vk.com/stuffycast')
+    elif a == ('podcast'):
+        await client.say('Душный подкаст — vk.com/stuffycast')
 
 
 # бот повторяет за пользователем
@@ -109,6 +113,15 @@ async def echo(*args):
         output += ' '
     await client.say(output)
 
+# порно
+@client.command()
+async def porn(kakaha: str):
+    if kakaha == 'jenre':
+        await client.say('тут я напишу жанр')
+    elif kakaha == 'actress':
+        await client.say('тут я напишу актрису')
+    else:
+        await client.say('пока что я могу посоветовать актрису (.porn actress) или жанр (.porn jenre)')
 
 client.loop.create_task(servers_status())  # раз в три часа инфа о серверах
 client.loop.create_task(change_status())  # залупленная задача на смену статуса
