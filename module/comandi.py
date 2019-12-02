@@ -36,6 +36,5 @@ class comandi:
     async def ты(self):
         await self.client.say(random.choice(list(open('pidor.txt', encoding="utf-8"))))
 
-
 def setup(client):
     client.add_cog(comandi(client))
