@@ -5,7 +5,7 @@ from itertools import cycle
 import random
 
 # токен для бота
-TOKEN = 'NTQ5NDk5MDgyMTY3ODEyMTA2.D1UxJQ.AWi7M3_4WKMf6zoT5Ydvp6_xRP8'
+TOKEN = 'token'
 
 # префикс-символ, который нужно ставить перед командой
 client = commands.Bot(command_prefix='.')
